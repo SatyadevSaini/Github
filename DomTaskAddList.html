@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add List </title>
+</head>
+<body>
+
+    <h1>List added here using the DOM</h1>
+
+     <ul id="list">
+    
+     </ul>
+
+     <script>
+        //select the id here
+        var list = document.getElementById('list');
+        //create list tag 
+        var list1 = document.createElement('li');
+        //gave it content
+        list1.textContent= "hello";
+        list1.style.cssText = "color:green;";
+        
+        list.appendChild(list1);
+
+        var list2 = document.createElement('li');
+        list2.textContent= "hello 2 list ";
+        list2.style.cssText = "color:yellow;";
+        
+        list1.appendChild(list2);
+        
+        
+
+     </script>
+</body>
+</html>
