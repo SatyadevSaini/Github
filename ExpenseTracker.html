@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+      
+
+     <style>
+
+#main{
+    text-align: center;
+    height: 380px;
+    width: 800px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 5px;
+    margin-left: 10px;
+    border: solid rgb(231, 135, 135) 0px ;
+    background-color: azure;
+}
+
+     </style>
+</head>
+<body>    
+      
+    <div id="main">
+        <h3> Expense Tracker</h3> <br>
+    <form action="">
+
+         <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Choose ExpenseAmount</label>
+            <input type="number" class="form-control" id="amount" >
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Choose Description </label>
+            <input class="form-control" id="description" rows="3"></input>
+          </div>
+
+        <select class="form-select" aria-label="Default select example" id="category">
+            <option selected>Choose Category</option>
+            <option value="Fuel">Fuel</option>
+            <option value="Food">Food</option>
+            <option value="Electicity">Electicity</option>
+            <option value="Movie">Movie</option>
+            <option value="Gaming">Gaming</option>
+          </select>
+                 
+          <br> 
+          <div class="col-auto">
+            <button type="submit" id="button" class="btn btn-primary mb-3">Add Expense</button>
+          </div>
+
+    </form>
+</div>
+
+<!-- JavaScript Written here .. -->
+<script>
+
+var button = document.getElementById('button');
+
+
+button.addEventListener('click' , add);
+function add(e){
+
+    e.preventDefault();
+
+    //create adiv here firstly 
+    let list = document.createElement('li'); //list created here ..
+    
+    //details print 
+
+    //create the text here ...
+    var text1 = document.createTextNode("Expense Amount : " + document.getElementById('amount')
+    .value + "  "+" Discription is :  " + document.getElementById('description').value +"   " + "Category: "+
+     document.getElementById('category').value + "  " );
+    
+     //delete button create here ...
+     var deletebtn = document.createElement('button'); //button created here ..
+     deletebtn.className="btn btn-danger btn-sm float-right delete";
+     deletebtn.textContent='delete expense';
+
+     //edit Button
+     var edit = document.createElement('button'); 
+     edit.className="btn btn-danger btn-sm float-right delete";
+     edit.textContent='edit expense';
+
+     //add text and delete button on the screen 
+    list.appendChild(text1);
+    list.appendChild(deletebtn);
+    list.appendChild(edit);
+
+   let main = document.getElementById('main');
+   main.appendChild(list);
+   
+    //object create here....
+    let myobj = {
+        ExpenseAmount : document.getElementById('amount').value ,
+        Description : document.getElementById('description').value,
+        Category : document.getElementById('category').value
+    }
+
+    var serilize = JSON.stringify(myobj);
+    console.log(myobj.ExpenseAmount);
+    localStorage.setItem( myobj.Description, serilize);
+}
+
+//now add delete Functionality in it 
+var del = document.getElementById('main');
+
+del.addEventListener('click' , DeleteFun);
+
+
+ function DeleteFun(e){
+    
+    // it will target the calss which contains delete in it 
+    if(e.target.classList.contains('delete')){
+       
+        //it will target the parent element ...
+        var li = e.target.parentElement;
+        //remove the child ..
+        del.removeChild(li);
+
+        localStorage.removeItem(document.getElementById('email').value);
+    }
+ }
+
+
+
+</script>
+
+</body>
+</html>
