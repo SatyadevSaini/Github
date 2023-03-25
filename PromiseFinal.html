@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Promise</h1>
+    <script>
+
+    
+    const posts=[
+
+    {title:'post one',body:'This is post one',time: new Date().getTime()},
+
+    {title:'post two',body:'This is post two',time: new Date().getTime()}
+
+          ]
+
+
+
+function updateLastUserActivityTime(){
+
+    return new Promise ((res,rej)=>{
+
+        setTimeout(()=>{
+
+         res(new Date().getTime());
+
+        },1000)
+
+    })
+
+}
+
+function createpost(post){
+
+    return new Promise((res,rej)=>{
+
+        setTimeout(()=>{
+
+           posts.push(post);
+
+           res();
+
+        })
+
+    })
+
+}
+
+function showAll(){
+
+    return new Promise((res,rej)=>{
+
+        setTimeout(()=>{
+
+            if(posts.length>0){
+
+                for(let i=0;i<posts.length;i++){
+
+                    console.log(" title -> "+posts[i].title+" time -> "+posts[i].time);
+
+                    console.log();
+
+                }
+
+                res();
+
+            }
+
+            else{
+
+                rej('array is empty');
+
+            }
+
+        })
+
+    })
+
+}
+
+function deletionpromise(){
+
+    return new Promise((res,rej)=>{
+
+        setTimeout(()=>{
+
+            if(posts.length>0){
+
+                const pop=posts.pop();
+
+                res(posts[posts.length-1]);
+
+            }
+
+            else{
+
+                console.log('array is empty');
+
+            }
+
+            
+
+        })
+
+    })
+
+}
+
+ function userupdatesapost(){
+
+    Promise.all([createpost,updateLastUserActivityTime]) .then(([creres,updares])=>{
+
+        console.log(updares);
+
+    })
+
+    .catch(errconsole.log(err))
+
+}
+
+
+console.log();
+
+console.log(showAll());
+
+//console.log(new Date().getTime())
+
+
+    </script>
+</body>
+</html>
