@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+     <h1> Proper app of movie with Wife</h1>
+    
+    <script>
+
+console.log("person1: show Tickets");
+console.log("person2: show Tickets")
+
+       
+const preMovie = async() => {
+
+    const promiseOfTicket = new Promise((res,rej) => {
+        setTimeout(() => {
+              res("ticket");
+        } ,3000 )
+    })
+
+
+    //popcorn Promise
+    const promiseOfPopcorn = new Promise((res,rej) => {
+              res("popcorn");
+    })
+
+    const addButter = new Promise((res,rej) => {
+              res("butter");
+    })
+
+
+     let ticket = await promiseOfTicket;
+
+     console.log(" Wife : i Have Ticket");
+
+     console.log(" Husband : We should go in ");
+       
+     console.log(" Wife : no im hungry");
+
+     let popcorn = await promiseOfPopcorn;
+
+     
+
+     console.log(" Husband : We should go in ");
+       
+     console.log(" Wife : i want butter on my popcorns");
+
+     let butter = await addButter;
+
+     
+
+     console.log(" Husband : butter got it ");
+     console.log(" Husband : anything else darling");
+       
+     console.log(" Wife : no let go inside & watch movie ");
+
+
+     return ticket;
+}
+
+    preMovie().then((m) => 
+    console.log("person3: show Tickets"));
+
+
+
+    </script>
+</body>
+</html>
