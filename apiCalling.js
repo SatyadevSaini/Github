@@ -1,4 +1,9 @@
 
+function refreshPage(){
+    window.location.reload();
+} 
+  
+  
   //  get the element on which we want to add the data in the server ...
        // on submit button we want to add data on the server ...
 
@@ -19,11 +24,12 @@
 
         }
 
-        axios.post("https://crudcrud.com/api/034308ee135245089ab10f5ab1a7f080/app" , obj)
+        axios.post("https://crudcrud.com/api/9f41d9caa6e84c9b866476d356db0634/app" , obj)
         .then(res =>  {
 
             showAddMessage(res) ,
-            console.log(res)
+            console.log(res) ,
+            refreshPage()
         })
         .catch(err => console.log(err))
 
@@ -55,12 +61,38 @@ function printData(res){   //res has all the data inside it...
 }
 
 
-   var listOfData = document.createElement('li');    // create a list here ...
 
 
+
+
+    // get the delete button here 
+    var del = document.getElementById('delete');
+    //add Action Listner
+    del.addEventListener('click' , deleteData)
+
+    //delete Element By Id
+    function deleteData(e){
+        e.preventDefault();
+        // get id here 
+        var id = document.getElementById('id').value;
+        axios.delete('https://crudcrud.com/api/9f41d9caa6e84c9b866476d356db0634/app/'+ id +"")
+        .then(res =>  {
+            console.log(res) ,
+            refreshPage()
+        }
+            )
+        .catch(err => console.log(err))
+
+    }
+
+
+
+
+
+   // View Data on the Screen here ...
     window.addEventListener("DOMContentLoaded" , () => {
        
-        axios.get("https://crudcrud.com/api/034308ee135245089ab10f5ab1a7f080/app")
+        axios.get("https://crudcrud.com/api/9f41d9caa6e84c9b866476d356db0634/app")
     .then( (response) =>  {
     
         console.log(response);
@@ -71,5 +103,3 @@ function printData(res){   //res has all the data inside it...
     .catch(err => console.log(err))
 
     });
-
-
