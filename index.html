@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #form{
+            
+            margin-top: 100px;
+            margin-left: 100px;
+            border: solid black 1px;
+            padding-left: 10px;
+            padding-top: 10px;
+            height: 400px;
+            width: 300px;
+            background-color: aquamarine;
+            border-radius: 10%;
+        }
+        label{
+            font-weight: bold;
+        }
+
+        input{
+            height: 25px;
+            font-size: 18px;
+        }
+
+       #button{
+            width: 80px;
+            height: 25px;
+            background-color:burlywood    
+        }
+        
+    </style>
+</head>
+<body>
+          
+    <h3 id="message"></h3>
+
+     <div id ='form'>
+        <h2 style="text-align: center;">Appointment Form </h2> <br>
+
+        <form action="">
+            <label for="name" > First Name:</label> <br>
+            <input type="text" id="name">   <br>  <br>   
+            <label for="email">Email:</label> <br>
+            <input type="email" id="email">  <br>   <br>
+
+            <label for="phone">Phone No:</label> <br>
+            <input type="number" id="phone">  <br><br>
+            <button type="submit" id="button">Submit</button> <br><br>
+            
+    
+        </form>
+
+        
+     </div>
+     <form action="">
+        <button type="submit" id="viewdata">View Data</button>
+    </form>
+     <br> <br> <br> <br>
+
+     <div id="res">
+            <ul>
+                <li id="list"></li>
+            </ul>
+     </div>
+        
+    
+
+      
+
+     <!-- for Accessing the api we need to tell our page to input here a server in it ... done  -->
+     <!-- it is a library we will add it in our code to use axios  // api use we need to add it in our code ... -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+     
+     <script src="apiCalling.js"></script>
+       
+    
+</body>
+</html>
