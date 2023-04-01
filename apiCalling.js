@@ -24,7 +24,7 @@ function refreshPage(){
 
         }
 
-        axios.post("https://crudcrud.com/api/9f41d9caa6e84c9b866476d356db0634/app" , obj)
+        axios.post("https://crudcrud.com/api/02b70e65abac40aab17b01d662632fce/app" , obj)
         .then(res =>  {
 
             showAddMessage(res) ,
@@ -75,7 +75,7 @@ function printData(res){   //res has all the data inside it...
         e.preventDefault();
         // get id here 
         var id = document.getElementById('id').value;
-        axios.delete('https://crudcrud.com/api/9f41d9caa6e84c9b866476d356db0634/app/'+ id +"")
+        axios.delete('https://crudcrud.com/api/02b70e65abac40aab17b01d662632fce/app/'+ id +"")
         .then(res =>  {
             console.log(res) ,
             refreshPage()
@@ -92,7 +92,7 @@ function printData(res){   //res has all the data inside it...
    // View Data on the Screen here ...
     window.addEventListener("DOMContentLoaded" , () => {
        
-        axios.get("https://crudcrud.com/api/9f41d9caa6e84c9b866476d356db0634/app")
+        axios.get("https://crudcrud.com/api/02b70e65abac40aab17b01d662632fce/app")
     .then( (response) =>  {
     
         console.log(response);
@@ -103,3 +103,36 @@ function printData(res){   //res has all the data inside it...
     .catch(err => console.log(err))
 
     });
+
+
+
+
+
+
+    //update here 
+   
+    var update = document.getElementById('update');
+    
+    update.addEventListener("click" , updateData)
+
+
+    //update Function 
+   function updateData(e){
+      e.preventDefault();
+      
+      var uid = document.getElementById('uid').value;
+
+      let obj = {
+        name  : document.getElementById('uname').value ,
+        email : document.getElementById('uemail').value ,
+        phone :  document.getElementById('uphone').value
+   }
+
+   axios.put("https://crudcrud.com/api/02b70e65abac40aab17b01d662632fce/app/" +uid+ "" , obj)
+   .then((res) => {
+    console.log(res) ,
+    refreshPage()
+   }).catch(err => console.log(err))
+
+
+   }
